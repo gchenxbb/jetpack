@@ -1,5 +1,7 @@
 package com.livedata.app;
 
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -11,9 +13,16 @@ import androidx.lifecycle.Observer;
 public class BusinessFragmentV extends BaselifecycleFragment<BusinessVM> {
     public static final String TAG = "TopDataFragment";
 
+    private TextView mTv;
+
+    @Override
+    protected void initView(View view) {
+        mTv = view.findViewById(R.id.tv_title);
+    }
+
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_movie_top;
+        return R.layout.fragment_businessx;
     }
 
     @Override
@@ -22,7 +31,7 @@ public class BusinessFragmentV extends BaselifecycleFragment<BusinessVM> {
         responseMutableLiveData.observe(this, new Observer<Subjects>() {
             @Override
             public void onChanged(@Nullable Subjects subjects) {
-                Toast.makeText(getContext(), subjects.getTitle() + "", Toast.LENGTH_SHORT).show();
+                mTv.setText(subjects.getTitle());
             }
         });
     }

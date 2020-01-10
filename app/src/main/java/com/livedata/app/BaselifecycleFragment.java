@@ -27,13 +27,9 @@ public abstract class BaselifecycleFragment<T extends BaseViewModel> extends Fra
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), null);
-        initView();
-        return view;
-    }
 
-    protected abstract int getLayoutId();
+        initView(view);
 
-    protected void initView() {
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(this.getActivity().getApplication());
         Class<T> tClass = getParameterizedTypeClass(this, 0);
@@ -44,6 +40,14 @@ public abstract class BaselifecycleFragment<T extends BaseViewModel> extends Fra
         liveData.observe(this, observer);
 
         dataObserver();
+
+        return view;
+    }
+
+    protected abstract int getLayoutId();
+
+    protected void initView(View view) {
+
     }
 
     protected Observer<String> observer = new Observer<String>() {
