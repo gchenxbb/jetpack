@@ -1,9 +1,5 @@
 package com.livedata.app;
 
-//mvvm 基础DataModel 数据
+//M
 public class BaseDataModel {
-
-    public BaseDataModel() {
-    }
-
 }

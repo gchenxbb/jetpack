@@ -1,10 +1,6 @@
-/**
- * Copyright 2019 bejson.com
- */
 package com.livedata.app;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  */

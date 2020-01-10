@@ -1,25 +1,27 @@
 package com.livedata.app;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+//baseV层
 public abstract class BaselifecycleFragment<T extends BaseViewModel> extends Fragment {
 
     protected T mViewModel;
-    private boolean hasLoadOnce;
 
     @Nullable
     @Override
@@ -32,66 +34,37 @@ public abstract class BaselifecycleFragment<T extends BaseViewModel> extends Fra
     protected abstract int getLayoutId();
 
     protected void initView() {
-        //第二参数是自定义ViewModel的Class
-        mViewModel = createViewModel(this, (Class<T>) getInstance(this, 0));
-        if (mViewModel != null) {
-            MutableLiveData liveData = mViewModel.loadState;
-            //基类自动加上网络状态观察者
-            liveData.observe(this, new Observer() {
-                @Override
-                public void onChanged(@Nullable Object o) {
+        ViewModelProvider.AndroidViewModelFactory factory =
+                ViewModelProvider.AndroidViewModelFactory.getInstance(this.getActivity().getApplication());
+        Class<T> tClass = getParameterizedTypeClass(this, 0);
+        mViewModel = factory.create(tClass);
 
-                }
-            });
-            dataObserver();
-        }
+
+        MutableLiveData liveData = mViewModel.loadState;
+        liveData.observe(this, observer);
+
+        dataObserver();
     }
 
-    protected <T extends ViewModel> T createViewModel(Fragment fragment, Class<T> modelClazz) {
-        ViewModelProvider viewModelProvider = ViewModelProviders.of(fragment);
-        return viewModelProvider.get(modelClazz);
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        if (!hasLoadOnce && isVisible() && isVisibleToUser) {
-            hasLoadOnce = true;
-            doLazyRequest();//如果有ViewPager，第2,3..个Fragment会走这里
-        }
-        super.setUserVisibleHint(isVisibleToUser);
-
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        if (getUserVisibleHint()) {//fragment可见
-            hasLoadOnce = true;
-            doLazyRequest();//ViewPager的第1个Fragment会走这里
-        } else {
-        }
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    protected void doLazyRequest() {
-        //真正加载数据
-        initData();
-    }
-    protected abstract void initData();
-
-
-    //观察者回调，更新UI，让子类实现
-    protected abstract void dataObserver();
-
-    //公共回调，基类实现
     protected Observer<String> observer = new Observer<String>() {
         @Override
         public void onChanged(@Nullable String s) {
-            //根据状态弹出网络信息UI
+            Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
         }
     };
 
-    //获取泛型类型，即和它绑定的ViewModel类型
-    public <T> T getInstance(Object object, int i) {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initData();
+    }
+
+    protected abstract void initData();
+
+    protected abstract void dataObserver();
+
+    //泛型类型，即和它绑定的ViewModel类型
+    public <T> T getParameterizedTypeClass(Object object, int i) {
         if (object != null) {
             ParameterizedType type = (ParameterizedType) object.getClass().getGenericSuperclass();
             Type[] array = type.getActualTypeArguments();
