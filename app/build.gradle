@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.livedata.app"
+        applicationId "com.aac.app"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1

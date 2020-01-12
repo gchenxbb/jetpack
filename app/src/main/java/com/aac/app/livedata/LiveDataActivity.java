@@ -1,12 +1,15 @@
-package com.livedata.app;
+package com.aac.app.livedata;
+
+import android.os.Bundle;
+
+import com.aac.app.R;
+import com.aac.app.business.BusinessFragmentV;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-
-public class MainActivity extends AppCompatActivity {
+public class LiveDataActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

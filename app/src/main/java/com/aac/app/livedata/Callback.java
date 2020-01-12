@@ -1,4 +1,4 @@
-package com.livedata.app;
+package com.aac.app.livedata;
 
 public interface Callback<T> {
     void onNoNetwork();
