@@ -19,8 +19,9 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 //baseV层
-public abstract class BaselifecycleFragment<T extends BaseViewModel> extends Fragment {
+public abstract class BaseLivedataFragment<T extends BaseViewModel> extends Fragment {
 
+    //VM持有LiveData
     protected T mViewModel;
 
     @Nullable

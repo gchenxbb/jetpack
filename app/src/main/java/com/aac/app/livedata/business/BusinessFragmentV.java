@@ -1,9 +1,9 @@
-package com.aac.app.business;
+package com.aac.app.livedata.business;
 
 import android.view.View;
 import android.widget.TextView;
 
-import com.aac.app.livedata.BaselifecycleFragment;
+import com.aac.app.livedata.BaseLivedataFragment;
 import com.aac.app.livedata.Subjects;
 import com.aac.app.R;
 
@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer;
 
 //V业务层
 //关联业务VM
-public class BusinessFragmentV extends BaselifecycleFragment<BusinessVM> {
+public class BusinessFragmentV extends BaseLivedataFragment<BusinessVM> {
     public static final String TAG = "TopDataFragment";
 
     private TextView mTv;

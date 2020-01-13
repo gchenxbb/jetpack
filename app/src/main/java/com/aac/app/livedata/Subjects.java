@@ -3,6 +3,7 @@ package com.aac.app.livedata;
 import java.io.Serializable;
 
 /**
+ * 实体类
  */
 public class Subjects implements Serializable {
 
