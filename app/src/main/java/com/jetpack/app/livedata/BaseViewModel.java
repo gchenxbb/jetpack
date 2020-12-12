@@ -1,4 +1,4 @@
-package com.aac.app.livedata;
+package com.jetpack.app.livedata;
 
 import android.app.Application;
 import android.text.TextUtils;

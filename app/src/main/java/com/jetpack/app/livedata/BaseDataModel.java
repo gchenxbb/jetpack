@@ -1,4 +1,4 @@
-package com.aac.app.livedata;
+package com.jetpack.app.livedata;
 
 //M
 public class BaseDataModel {

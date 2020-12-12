@@ -1,9 +1,9 @@
-package com.aac.app.livedata;
+package com.jetpack.app.livedata;
 
 import android.os.Bundle;
 
-import com.aac.app.R;
-import com.aac.app.livedata.business.BusinessFragmentV;
+import com.jetpack.app.R;
+import com.jetpack.app.livedata.business.BusinessFragmentV;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

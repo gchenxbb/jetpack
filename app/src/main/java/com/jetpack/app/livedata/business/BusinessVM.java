@@ -1,13 +1,13 @@
-package com.aac.app.livedata.business;
+package com.jetpack.app.livedata.business;
 
 import android.app.Application;
 import android.util.Log;
 
-import com.aac.app.livedata.BaseViewModel;
-import com.aac.app.livedata.Callback;
-import com.aac.app.livedata.Subjects;
-
 import androidx.lifecycle.MutableLiveData;
+
+import com.jetpack.app.livedata.BaseViewModel;
+import com.jetpack.app.livedata.Callback;
+import com.jetpack.app.livedata.Subjects;
 
 //业务VM
 public class BusinessVM extends BaseViewModel<BusinessM> {

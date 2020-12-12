@@ -1,11 +1,11 @@
-package com.aac.app.livedata.business;
+package com.jetpack.app.livedata.business;
 
 import android.view.View;
 import android.widget.TextView;
 
-import com.aac.app.livedata.BaseLivedataFragment;
-import com.aac.app.livedata.Subjects;
-import com.aac.app.R;
+import com.jetpack.app.R;
+import com.jetpack.app.livedata.BaseLivedataFragment;
+import com.jetpack.app.livedata.Subjects;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;

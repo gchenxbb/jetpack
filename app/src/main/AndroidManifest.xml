@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aac.app">
+    package="com.jetpack.app">
 
     <application
         android:allowBackup="true"
@@ -21,6 +21,9 @@
         <activity android:name=".LifeCycleActivity" />
 
 
+        <activity android:name=".room.MainActivity" />
+
+        <activity android:name=".room.UserActivity" />
     </application>
 
 </manifest>

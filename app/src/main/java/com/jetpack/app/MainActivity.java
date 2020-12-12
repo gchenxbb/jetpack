@@ -1,4 +1,4 @@
-package com.aac.app;
+package com.jetpack.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.aac.app.livedata.LiveDataActivity;
+import com.jetpack.app.livedata.LiveDataActivity;
+import com.jetpack.app.room.UserActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.tv_livedata) {
             startActivity(new Intent(MainActivity.this, LiveDataActivity.class));
         } else if (v.getId() == R.id.tv_lifecycle) {
-            startActivity(new Intent(MainActivity.this, LifeCycleActivity.class));
+//            startActivity(new Intent(MainActivity.this, LifeCycleActivity.class));
+            startActivity(new Intent(MainActivity.this, UserActivity.class));
+
         }
     }
 

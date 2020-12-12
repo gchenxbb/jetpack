@@ -1,4 +1,4 @@
-package com.aac.app;
+package com.jetpack.app;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.aac.app.livedata;
+package com.jetpack.app.livedata;
 
 public interface Callback<T> {
     void onNoNetwork();

@@ -1,9 +1,8 @@
-package com.aac.app.livedata.business;
+package com.jetpack.app.livedata.business;
 
-
-import com.aac.app.livedata.BaseDataModel;
-import com.aac.app.livedata.Callback;
-import com.aac.app.livedata.Subjects;
+import com.jetpack.app.livedata.BaseDataModel;
+import com.jetpack.app.livedata.Callback;
+import com.jetpack.app.livedata.Subjects;
 
 public class BusinessM extends BaseDataModel {
 
